@@ -1,7 +1,5 @@
 package leetcode.com.maximize.sum.of.array.after.k.negations;
 
-import java.util.Arrays;
-
 /**
  * A solution for https://leetcode.com/problems/maximize-sum-of-array-after-k-negations/
  * <p>
@@ -33,14 +31,36 @@ import java.util.Arrays;
  */
 class Solver {
     int largestSumAfterKNegations(int[] A, int K) {
-        int[] sorted = Arrays.stream(A).sorted().toArray();
-
         while (K != 0) {
-            sorted[0] = sorted[0] * -1;
-            sorted = Arrays.stream(sorted).sorted().toArray();
+            int minIndex = findMinIndex(A);
+            int current = A[minIndex];
+            if (current == 0) {
+                return arraySum(A);
+            }
+            A[minIndex] = current * -1;
             K--;
         }
 
-        return Arrays.stream(sorted).sum();
+        return arraySum(A);
+    }
+
+    private int findMinIndex(int[] array) {
+        int min = 100; // Maximum possible value;
+        int minIndex = 0;
+        for (int i = 0; i < array.length; i++) {
+            if (array[i] < min) {
+                min = array[i];
+                minIndex = i;
+            }
+        }
+        return minIndex;
+    }
+
+    private int arraySum(int[] array) {
+        int sum = 0;
+        for (int i : array) {
+            sum += i;
+        }
+        return sum;
     }
 }
