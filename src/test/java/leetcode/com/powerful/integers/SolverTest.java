@@ -21,4 +21,10 @@ class SolverTest extends TimeTrackedTest {
         assertEquals(underTest.powerfulIntegers(2, 3, 10),
                 Arrays.asList(2, 3, 4, 5, 7, 9, 10));
     }
+
+    @Test
+    void test3() {
+        assertEquals(underTest.powerfulIntegers(2, 1, 10),
+                Arrays.asList(2, 3, 5, 9));
+    }
 }

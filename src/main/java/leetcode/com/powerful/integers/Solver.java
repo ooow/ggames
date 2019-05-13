@@ -4,7 +4,6 @@ import java.util.ArrayList;
 import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
-import java.util.TreeSet;
 
 /**
  * A solution for https://leetcode.com/problems/powerful-integers/
@@ -38,7 +37,7 @@ import java.util.TreeSet;
  * 0 <= bound <= 10^6
  */
 class Solver {
-    public List<Integer> powerfulIntegers(int x, int y, int bound) {   
+    List<Integer> powerfulIntegers(int x, int y, int bound) {
         List<Integer> xPow = new ArrayList<>();
         List<Integer> yPow = new ArrayList<>();
         Set<Integer> res = new HashSet<>();
