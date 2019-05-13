@@ -38,21 +38,24 @@ import java.util.TreeSet;
  * 0 <= bound <= 10^6
  */
 class Solver {
-    List<Integer> powerfulIntegers(int x, int y, int bound) {
-        Set<Integer> xPow = new HashSet<>();
-        Set<Integer> yPow = new HashSet<>();
-        Set<Integer> res = new TreeSet<>();
+    public List<Integer> powerfulIntegers(int x, int y, int bound) {   
+        List<Integer> xPow = new ArrayList<>();
+        List<Integer> yPow = new ArrayList<>();
+        Set<Integer> res = new HashSet<>();
 
-        int i = 0;
-        while (Math.pow(x, i) <= bound) {
-            xPow.add((int) Math.pow(x, i));
-            i++;
+        int tempX = x;
+        int tempY = y;
+
+        xPow.add(1);
+        yPow.add(1);
+        while (tempX != 1 && tempX <= bound) {
+            xPow.add(tempX);
+            tempX = tempX * x;
         }
 
-        i = 0;
-        while (Math.pow(y, i) <= bound) {
-            yPow.add((int) Math.pow(y, i));
-            i++;
+        while (tempY != 1 && tempY <= bound) {
+            yPow.add(tempY);
+            tempY = tempY * y;
         }
 
         for (int j : xPow) {
