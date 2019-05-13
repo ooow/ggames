@@ -3,4 +3,4 @@ resources.
 
 #### Just for fun and train.
 
-My profile on leetcode: https://leetcode.com/gtirkiya/
+My profile on leetcode: https://leetcode.com/ooow/
