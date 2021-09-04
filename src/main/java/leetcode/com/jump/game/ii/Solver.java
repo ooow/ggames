@@ -1,7 +1,5 @@
 package leetcode.com.jump.game.ii;
 
-import java.util.Arrays;
-
 /**
  * A solution for https://leetcode.com/problems/jump-game-ii/
  * <p>
@@ -23,45 +21,16 @@ import java.util.Arrays;
  */
 public class Solver {
     int jump(int[] nums) {
-        if (nums.length <= 1) {
-            return 0;
+        int jumps = 0;
+        int current = 0;
+        int next = 0;
+        for (int i = 0; i < nums.length - 1; i++) {
+            next = Math.max(next, i + nums[i]);
+            if (i == current) {
+                jumps++;
+                current = next;
+            }
         }
-        nums[nums.length - 1] = 0;
-        int sum = nums[0];
-        if (sum >= nums.length - 1) {
-            return 1;
-        }
-        if (sum > 1 && nums[1] > 1 || nums[nums.length - 2] > 1) {
-            sum--;
-        }
-        Arrays.sort(nums);
-        int i = nums[nums.length - 1] == sum ? nums.length - 2 : nums.length - 1;
-        int j = 1;
-        while (sum < nums.length - 1) {
-            sum += nums[i];
-            j++;
-            i--;
-        }
-        return j;
+        return jumps;
     }
 }
-
-//    int jump(int[] nums) {
-//        if (nums.length <= 1) {
-//            return 0;
-//        }
-//        int sum = nums[0];
-//        int i = 1;
-//        int j = 1;
-//        while (sum < nums.length - 1) {
-//            sum += nums[i];
-//            if (nums[i] != 0) {
-//                j++;
-//                if (nums[i - 1] > 1 && nums[i] > 1) {
-//                    sum--;
-//                }
-//            }
-//            i++;
-//        }
-//        return j;
-//    }
